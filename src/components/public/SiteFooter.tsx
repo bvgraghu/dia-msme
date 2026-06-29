@@ -1,106 +1,214 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { footerColumns, footerLinks } from "./content";
+import {
+  ChevronRight,
+  Phone,
+  Mail,
+  MapPin,
+  Headset,
+  MessageCircle,
+} from "lucide-react";
 
 const NAVY = "#1b2a78";
 
-const socials: { label: string; path: string }[] = [
-  { label: "Facebook", path: "M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14v-2c0-.6.4-1 1-1z" },
-  { label: "Instagram", path: "M12 7.2A4.8 4.8 0 1 0 16.8 12 4.8 4.8 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zM17 5.8a1.1 1.1 0 1 0 1.1 1.1A1.1 1.1 0 0 0 17 5.8zM12 4.6c2.4 0 2.7 0 3.6.05a4.9 4.9 0 0 1 1.7.3 2.9 2.9 0 0 1 1.7 1.7 4.9 4.9 0 0 1 .3 1.7c.04.9.05 1.2.05 3.6s0 2.7-.05 3.6a4.9 4.9 0 0 1-.3 1.7 2.9 2.9 0 0 1-1.7 1.7 4.9 4.9 0 0 1-1.7.3c-.9.04-1.2.05-3.6.05s-2.7 0-3.6-.05a4.9 4.9 0 0 1-1.7-.3 2.9 2.9 0 0 1-1.7-1.7 4.9 4.9 0 0 1-.3-1.7C4.6 14.7 4.6 14.4 4.6 12s0-2.7.05-3.6a4.9 4.9 0 0 1 .3-1.7 2.9 2.9 0 0 1 1.7-1.7 4.9 4.9 0 0 1 1.7-.3c.9-.04 1.2-.05 3.6-.05z" },
-  { label: "X", path: "M17.5 5h2.4l-5.3 6 6.2 8h-4.9l-3.8-5-4.4 5H5.3l5.6-6.4L4.9 5h5l3.5 4.6L17.5 5z" },
-  { label: "LinkedIn", path: "M6.9 8.4A1.5 1.5 0 1 1 8.4 6.9 1.5 1.5 0 0 1 6.9 8.4zM8.2 18H5.6V9.7h2.6zm10.4 0H16v-4.3c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2V18h-2.6V9.7h2.5v1.1h.04a2.8 2.8 0 0 1 2.5-1.4c2.7 0 3.2 1.8 3.2 4.1z" },
-  { label: "YouTube", path: "M21.6 8.2a2.5 2.5 0 0 0-1.7-1.7C18.3 6 12 6 12 6s-6.3 0-7.9.4a2.5 2.5 0 0 0-1.7 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 3.8 2.5 2.5 0 0 0 1.7 1.7C5.7 18 12 18 12 18s6.3 0 7.9-.4a2.5 2.5 0 0 0 1.7-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-3.8zM10 15V9l5.2 3z" },
+const quickLinks = [
+  "About DIA",
+  "Register your Association",
+  "IA Directory",
+  "Events & Webinars",
+  "MSME Profiles",
+  "FAQs",
+];
+
+const bottomLinks = [
+  "Home",
+  "About DIA",
+  "SIDBI",
+  "Terms & Conditions",
+  "Copyright Policy",
+  "Hyperlink Policy",
+  "Privacy Policy",
+  "Accessibility",
+  "Sitemap",
+  "Feedback",
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="text-white" style={{ backgroundColor: NAVY }}>
+    <footer className="relative">
+      {/* Semi-circular curved top — rises into the section above */}
+      <svg
+        className="absolute -top-[58px] left-0 h-[60px] w-full"
+        viewBox="0 0 1440 90"
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        <path d="M0,90 L0,48 C360,4 1080,4 1440,48 L1440,90 Z" fill={NAVY} />
+        <path
+          d="M0,48 C360,4 1080,4 1440,48"
+          fill="none"
+          stroke="#3a49b5"
+          strokeWidth="2.5"
+        />
+      </svg>
+
       {/* Main */}
-      <div className="mx-auto max-w-[1280px] px-4 py-14 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_repeat(3,1fr)]">
-          {/* Brand + contact */}
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="grid size-11 place-items-center rounded-[10px] bg-white text-[15px] font-bold text-[#1b2a78]">
-                DIA
-              </span>
-              <div className="leading-tight">
-                <p className="text-[16px] font-bold">Development of Industry Associations</p>
-                <p className="text-[12px] text-white/70">An initiative of SIDBI</p>
+      <div
+        className="bg-gradient-to-b from-[#1b2a78] to-[#142060] text-white"
+        style={{ backgroundColor: NAVY }}
+      >
+        <div className="mx-auto grid max-w-[1280px] gap-10 px-4 pb-12 pt-8 sm:px-6 lg:grid-cols-[1.2fr_1fr_1.2fr_1.1fr]">
+          {/* Brand */}
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <div className="grid size-28 place-items-center rounded-full border-2 border-dashed border-white/40 bg-white/95 p-3">
+              <div className="leading-tight text-[#1b2a78]">
+                <p className="text-[22px] font-extrabold tracking-tight">DIA</p>
+                <p className="text-[9px] font-semibold">an initiative of SIDBI</p>
               </div>
             </div>
-            <p className="mt-4 max-w-xs text-[14px] leading-relaxed text-white/75">
-              A national digital platform empowering Industry Associations and
-              MSMEs through a unified, collaborative network.
+            <p className="mt-4 max-w-[16rem] text-[15px] font-semibold leading-snug">
+              Development of Industry Associations:
+              <span className="block text-white/80">
+                Connecting India&apos;s MSME Ecosystem
+              </span>
             </p>
-            <ul className="mt-5 space-y-2.5 text-[14px] text-white/80">
-              <li className="flex items-center gap-2.5">
-                <Phone className="size-4 text-white/60" /> 1800-XXX-XXXX
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-[16px] font-bold">Quick Links</h4>
+            <ul className="mt-4 space-y-2.5">
+              {quickLinks.map((l) => (
+                <li key={l}>
+                  <Link
+                    href="#"
+                    className="flex items-center gap-1.5 text-[14px] text-white/80 hover:text-white"
+                  >
+                    <ChevronRight className="size-3.5 text-[#f5c518]" />
+                    {l}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact & Support */}
+          <div>
+            <h4 className="text-[16px] font-bold">Contact &amp; Support</h4>
+            <ul className="mt-4 space-y-3.5 text-[14px] text-white/85">
+              <li className="flex items-center gap-3">
+                <FIcon><Headset className="size-4" /></FIcon>
+                DIA Help Desk
               </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="size-4 text-white/60" /> support@dia-msme.in
+              <li className="flex items-center gap-3">
+                <FIcon><Phone className="size-4" /></FIcon>
+                +91-11-2688-5021
               </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-white/60" />
-                SIDBI, SIDBI Tower, 15 Ashok Marg, Lucknow – 226001
+              <li className="flex items-center gap-3">
+                <FIcon><Mail className="size-4" /></FIcon>
+                support[at]dia-msme[dot]in
+              </li>
+              <li className="flex items-start gap-3">
+                <FIcon><MapPin className="size-4" /></FIcon>
+                <span>
+                  SIDBI, SIDBI Tower, 15 Ashok Marg,
+                  <br />
+                  Lucknow – 226001
+                </span>
               </li>
             </ul>
           </div>
 
-          {footerColumns.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-[14px] font-semibold uppercase tracking-wider text-white/90">
-                {col.title}
-              </h4>
-              <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <Link href="#" className="text-[14px] text-white/70 hover:text-white">
-                      {l}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Helpline + app */}
+          <div>
+            <h4 className="text-[16px] font-bold">Helpline</h4>
+            <ul className="mt-4 space-y-3.5 text-[14px] text-white/85">
+              <li className="flex items-center gap-3">
+                <FIcon><Phone className="size-4" /></FIcon>
+                +91-11-2688-5021
+              </li>
+              <li className="flex items-center gap-3">
+                <FIcon><Phone className="size-4" /></FIcon>
+                1800 11 3090 (Toll Free)
+              </li>
+              <li className="flex items-center gap-3">
+                <FIcon><MessageCircle className="size-4" /></FIcon>
+                +91 74283 21144 (WhatsApp)
+              </li>
+            </ul>
+
+            <p className="mt-5 text-[14px] font-bold">Download the DIA app</p>
+            <div className="mt-2.5 flex flex-wrap gap-2.5">
+              <StoreBadge store="play" />
+              <StoreBadge store="apple" />
             </div>
-          ))}
-        </div>
-
-        {/* Social */}
-        <div className="mt-10 flex flex-wrap items-center gap-3 border-t border-white/15 pt-6">
-          <span className="text-[14px] font-medium text-white/80">Social Connections</span>
-          {socials.map((s) => (
-            <Link
-              key={s.label}
-              href="#"
-              aria-label={s.label}
-              className="grid size-9 place-items-center rounded-full bg-white/10 text-white/80 transition-colors hover:bg-[#f5c518] hover:text-ink"
-            >
-              <svg viewBox="0 0 24 24" className="size-4 fill-current">
-                <path d={s.path} />
-              </svg>
-            </Link>
-          ))}
+          </div>
         </div>
       </div>
 
-      {/* Policy links row */}
-      <div className="border-t border-white/15">
-        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-4 text-[13px] text-white/75 sm:px-6">
-          {footerLinks.map((l) => (
-            <Link key={l} href="#" className="hover:text-white">
-              {l}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="bg-black/25">
-        <div className="mx-auto max-w-[1280px] px-4 py-4 text-center text-[12.5px] text-white/60 sm:px-6 sm:text-left">
-          Copyright © {new Date().getFullYear()} Small Industries Development
-          Bank of India (SIDBI). All Rights Reserved.
+      {/* Bottom black bar */}
+      <div className="bg-[#0c1024] text-white">
+        <div className="mx-auto max-w-[1280px] px-4 py-4 sm:px-6">
+          <nav className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-[13.5px]">
+            {bottomLinks.map((l, i) => (
+              <span key={l} className="flex items-center gap-2">
+                <Link href="#" className="text-white/85 hover:text-[#f5c518]">
+                  {l}
+                </Link>
+                {i < bottomLinks.length - 1 && (
+                  <span className="text-white/25">|</span>
+                )}
+              </span>
+            ))}
+          </nav>
+          <div className="mt-3 flex flex-col gap-1 border-t border-white/10 pt-3 text-[12.5px] text-white/60 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              Copyright © {new Date().getFullYear()}. All Rights Reserved by{" "}
+              <span className="font-semibold text-white/80">SIDBI</span>.
+            </p>
+            <p>Developed and Managed by the DIA Project Team</p>
+          </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-white/10 text-[#f5c518]">
+      {children}
+    </span>
+  );
+}
+
+function StoreBadge({ store }: { store: "play" | "apple" }) {
+  const isPlay = store === "play";
+  return (
+    <Link
+      href="#"
+      className="flex items-center gap-2.5 rounded-[8px] border border-white/25 bg-black/40 px-3 py-1.5 transition-colors hover:bg-black/60"
+      aria-label={isPlay ? "Get it on Google Play" : "Download on the App Store"}
+    >
+      {isPlay ? (
+        <svg viewBox="0 0 24 24" className="size-6">
+          <path d="M3.6 2.3 13.4 12 3.6 21.7c-.3-.2-.5-.6-.5-1V3.3c0-.4.2-.8.5-1z" fill="#34d399" />
+          <path d="M16.8 8.6 13.4 12l3.4 3.4 3.3-1.9c.8-.5.8-1.6 0-2l-3.3-1.9z" fill="#fbbf24" />
+          <path d="m13.4 12-9.8 9.7c.3.2.7.2 1 0l11.2-6.3-2.4-3.4z" fill="#f87171" />
+          <path d="m13.4 12 2.4-3.4L4.6 2.3c-.3-.2-.7-.2-1 0L13.4 12z" fill="#60a5fa" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" className="size-6 fill-white">
+          <path d="M17.05 12.04c-.03-2.86 2.34-4.23 2.44-4.3-1.33-1.95-3.4-2.22-4.13-2.25-1.76-.18-3.43 1.03-4.32 1.03-.89 0-2.26-1.01-3.72-.98-1.91.03-3.68 1.11-4.66 2.82-1.99 3.45-.51 8.56 1.42 11.36.94 1.37 2.06 2.91 3.53 2.86 1.42-.06 1.95-.92 3.66-.92 1.71 0 2.19.92 3.69.89 1.52-.03 2.49-1.4 3.42-2.78 1.08-1.59 1.52-3.13 1.55-3.21-.03-.01-2.97-1.14-3-4.19zM14.28 4.82c.78-.95 1.31-2.27 1.16-3.58-1.12.05-2.49.75-3.3 1.69-.72.83-1.36 2.18-1.19 3.46 1.25.1 2.54-.63 3.33-1.57z" />
+        </svg>
+      )}
+      <span className="leading-tight">
+        <span className="block text-[9px] uppercase text-white/60">
+          {isPlay ? "Get it on" : "Download on the"}
+        </span>
+        <span className="block text-[13px] font-semibold text-white">
+          {isPlay ? "Google Play" : "App Store"}
+        </span>
+      </span>
+    </Link>
   );
 }
